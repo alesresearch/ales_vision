@@ -165,7 +165,10 @@ export default defineComponent({
                         console.error(err)
                         self.no_webcam = true
                         setTimeout(() => {
-                            window.location.href = self.next_url + '&webcamerror=1'
+                            // &webcamerror=1 disabled 2026-08-28: Sentio can't handle multiple response params
+                            // in the return url yet. Re-enable by restoring the line below once it can.
+                            // window.location.href = self.next_url + '&webcamerror=1'
+                            window.location.href = self.next_url
                         }, 30000)
                     }
                 )
@@ -175,7 +178,10 @@ export default defineComponent({
         video.addEventListener('play', () => {
             var self = this
             self.timeoutMaxTimeNoPlayButton = setTimeout(() => {
-                window.location.href = self.next_url + '&webcamerror=2'
+                // &webcamerror=2 disabled 2026-08-28: Sentio can't handle multiple response params
+                // in the return url yet. Re-enable by restoring the line below once it can.
+                // window.location.href = self.next_url + '&webcamerror=2'
+                window.location.href = self.next_url
 
             }, 30000);
 
